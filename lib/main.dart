@@ -1,83 +1,71 @@
+// ignore_for_file: deprecated_member_use, avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/pages/description_place.dart';
-import 'package:flutter_application_1/src/pages/gradient_back.dart';
-import 'package:flutter_application_1/src/pages/review_list.dart';
+// import 'package:flutter_application_1/src/pages/';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
-// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  String descriptionDummy =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+  const MyApp({Key? key}) : super(key: key);
 
-  MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Truco',
+      theme: ThemeData(primaryColor: Colors.black),
       home: Scaffold(
-        //body: new DescriptionPlace("Bahamas", 4, descriptionDummy),
-        body: Stack(
-          children: <Widget>[
-            ListView(
-              children: <Widget>[
-                DescriptionPlace("Bahamas", 4, descriptionDummy),
-                const ReviewList()
-              ],
+        appBar: AppBar(
+          elevation: 2,
+          centerTitle: true,
+          backgroundColor: Colors.purpleAccent,
+          title: const Text(
+            'TRUCO',
+            style: TextStyle(
+                color: Colors.amberAccent,
+                fontWeight: FontWeight.w900,
+                fontSize: 25),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.question_mark_rounded),
+              onPressed: () => print('hi on icon action'),
             ),
-            const GradientBack()
           ],
         ),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            RaisedButton(
+              child: const Text('Juego Rápido'),
+              onPressed: () => print('apretado'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            RaisedButton(
+              child: const Text('Carrera'),
+              onPressed: () => print('apretado'),
+            ),
+            RaisedButton(
+              child: const Text('Cargar Juego'),
+              onPressed: () => print('apretado'),
+            ),
+            RaisedButton(
+              child: const Text('Puntuación'),
+              onPressed: () => print('apretado'),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        bottomNavigationBar: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          child: Container(height: 50.0),
+          elevation: 5,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => print('hi on button action'),
+          tooltip: 'Increment Counter',
+          child: const Icon(Icons.house_sharp),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       ),
     );
   }
